@@ -37,8 +37,6 @@ const ROLES = {
   },
 };
 
-const isOwner = () => {};
-
 export const hasPermission = (user, resource, action, data) => {
   return user.roles.some((role) => {
     const permission = ROLES[role][resource]?.[action];
