@@ -40,10 +40,9 @@ const ROLES = {
 export const hasPermission = (user, resource, action, data) => {
   return user.roles.some((role) => {
     const permission = ROLES[role][resource]?.[action];
-    if (permission === null) return false;
+    if (!permission) return false;
     if (permission === true || permission === false) return permission;
-
-    return data !== null && permission(user, data);
+    return data && permission(user, data);
   });
 };
 
